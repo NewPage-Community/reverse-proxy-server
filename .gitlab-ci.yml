@@ -1,0 +1,6 @@
+stages:
+  - build-image
+
+include:
+  - project: newpage/newpage-build-tool
+    file: /gitlab-ci/Docker.gitlab-ci.yml
