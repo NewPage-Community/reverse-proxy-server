@@ -68,11 +68,8 @@ func rewrite(r *http.Response) (err error) {
 			}
 		}
 		if buf != nil {
-			if endpoint.Scheme == "http" {
-				buf = bytes.Replace(buf, []byte("https://"+remote.Host), []byte("http://"+endpoint.Host), -1)
-			} else {
-				buf = bytes.Replace(buf, []byte(remote.Host), []byte(endpoint.Host), -1)
-			}
+			buf = bytes.Replace(buf, []byte(remote.String()), []byte(endpoint.String()), -1)
+			buf = bytes.Replace(buf, []byte(remote.Host), []byte(endpoint.Host), -1)
 			r.Body = ioutil.NopCloser(bytes.NewReader(buf))
 			r.ContentLength = int64(len(buf))
 			r.Header.Set("Content-Length", fmt.Sprint(len(buf)))
