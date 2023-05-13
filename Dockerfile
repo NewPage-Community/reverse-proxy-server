@@ -1,4 +1,4 @@
-FROM registry.new-page.xyz/golang:1.14.4-alpine
+FROM golang:1.14.4-alpine
 
 WORKDIR /go/src/app
 COPY . .
